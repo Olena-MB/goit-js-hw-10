@@ -16,13 +16,12 @@ refs.inputSearch.addEventListener('input', debounce(onSearch, DEBOUNCE_DELAY));
 
 function onSearch(e) {
     e.preventDefault();
-  const nameCountry = refs.inputSearch.value.trim();
-  if (nameCountry  === !'') {
     refs.countryList.innerHTML = '';    
     refs.countryInfo.innerHTML = '';
+  const nameCountry = refs.inputSearch.value.trim();
+  if (nameCountry.length < 1) {
     return;  
     }
-
     fetchCountries(nameCountry)
     .then(onCountry)
     .catch(onError) 
